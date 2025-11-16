@@ -7,17 +7,14 @@ export const baseAuthConfig = {
   advanced: {
     cookies: {
       session_token: {
-        name: "better-auth-hono-d1-auth-token",
+        name: "auth-token",
         attributes: {
-          domain: "heteropterous-lynnette-repressive.ngrok-free.dev",
-          secure: true,
-          sameSite: "lax",
+          domain: "backend.atomeistee.workers.dev",
         },
       },
     },
   },
-  appName: "better-auth-hono-d1",
-  trustedOrigins: ["https://heteropterous-lynnette-repressive.ngrok-free.dev"],
+  appName: "impromptertest",
 } as const satisfies Omit<BetterAuthOptions, "database" | "socialProviders">;
 
 export const getAuth = (c: AppContext) => {
@@ -28,9 +25,8 @@ export const getAuth = (c: AppContext) => {
   return betterAuth({
     ...baseAuthConfig,
     trustedOrigins: [
-      ...baseAuthConfig.trustedOrigins, // This keeps the ngrok URL
+      "https://backend.atomeistee.workers.dev",
       "impromptertest://",
-      "https://xi8udou-dmitrykulakov-8081.exp.direct", // This adds your app scheme
     ],
     database: {
       dialect: d1Dialect,
@@ -46,7 +42,6 @@ export const getAuth = (c: AppContext) => {
       tiktok: {
         clientSecret: c.env.TIKTOK_CLIENT_SECRET,
         clientKey: c.env.TIKTOK_CLIENT_KEY,
-        scope: ["user.info.basic"],
       },
       facebook: {
         clientId: c.env.FACEBOOK_CLIENT_ID,
