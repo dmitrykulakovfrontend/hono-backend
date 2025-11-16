@@ -24,28 +24,20 @@ export const getAuth = (c: AppContext) => {
 
   return betterAuth({
     ...baseAuthConfig,
-    trustedOrigins: [
-      "https://backend.atomeistee.workers.dev",
-      "impromptertest://",
-    ],
+    trustedOrigins: ["impromptertest://"],
     database: {
       dialect: d1Dialect,
       type: "sqlite",
     },
-    plugins: [expo()],
+    plugins: [expo({ disableOriginOverride: true })],
     socialProviders: {
       google: {
         clientId: c.env.GOOGLE_CLIENT_ID,
         clientSecret: c.env.GOOGLE_CLIENT_SECRET,
-        scope: ["openid", "email", "profile"],
       },
       tiktok: {
         clientSecret: c.env.TIKTOK_CLIENT_SECRET,
         clientKey: c.env.TIKTOK_CLIENT_KEY,
-      },
-      facebook: {
-        clientId: c.env.FACEBOOK_CLIENT_ID,
-        clientSecret: c.env.FACEBOOK_CLIENT_SECRET,
       },
     },
   });

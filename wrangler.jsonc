@@ -11,6 +11,12 @@
       "remote": true
     }
   ],
+  "vars": {
+    "BETTER_AUTH_URL": "https://backend.atomeistee.workers.dev",
+    "TIKTOK_CLIENT_KEY": "sbawuwj1nudkl3m7oc",
+    "GOOGLE_CLIENT_ID": "701053896778-3o9vk122627nqh50o39s57l0k5vg7h74.apps.googleusercontent.com",
+    "REDIRECT_URI": "https://backend.atomeistee.workers.dev/api/auth/callback"
+  },
   "observability": {
     "logs": {
       "enabled": true,
